@@ -32,15 +32,50 @@ for i in range(len(year_day)):
             set_2.append(year_day[i-1])
             set_2.append(year_day[i])
 
+set_1 = list(dict.fromkeys(set_1))
+set_2 = list(dict.fromkeys(set_2))
+
 # Arrange sets for each month
 january = [[], []]
-
-january[0].append("Something")
+february = [[], []]
+march = [[], []]
+april = [[], []]
+may = [[], []]
+june = [[], []]
+july = [[], []]
+august = [[], []]
+september = [[], []]
+october = [[], []]
+november = [[], []]
+december = [[], []]
 
 for i in set_1:
-
-    if "2021.01" == str(i):
+    if "2021-01" in str(i):
         january[0].append(i)
+    elif "2021-02" in str(i):
+        february[0].append(i)
+    elif "2021-03" in str(i):
+        march[0].append(i)
+    elif "2021-04" in str(i):
+        april[0].append(i)
+    elif "2021-05" in str(i):
+        may[0].append(i)
+    elif "2021-06" in str(i):
+        june.append(i)
+    elif "2021-07" in str(i):
+        july.append(i)
+    elif "2021-08" in str(i):
+        august.append(i)
+    elif "2021-09" in str(i):
+        september.append(i)
+    elif "2021-10" in str(i):
+        october.append(i)
+    elif "2021-11" in str(i):
+        november.append(i)
+    elif "2021-12" in str(i):
+        december.append(i)
 
 for i in january:
-    print(i)
+    i = str(i)
+
+# TODO: sort the list so that days in month follow the sequence
