@@ -1,4 +1,5 @@
 import datetime as dt
+import time
 
 class Manager():
     """Class of each manager"""
@@ -20,6 +21,10 @@ def get_shiftset(d):
     set_day = (d - dt.date(d.year,1,1)).days % 6
     return "Set 1" if set_day < 3 else "Set 2"
 
+def printff(text):
+  for i in text:
+    time.sleep(0.05)
+    print(text, end='', flush=True)
 
 # show all days of 2021 and their sets
 #print("Sets of 2021")
