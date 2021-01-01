@@ -24,7 +24,7 @@ def get_shiftset(d):
 def printff(text):
   for i in text:
     time.sleep(0.05)
-    print(text, end='', flush=True)
+    print(i, end='', flush=True)
 
 # show all days of 2021 and their sets
 #print("Sets of 2021")

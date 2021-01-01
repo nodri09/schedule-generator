@@ -9,33 +9,33 @@ from sys import argv, exit
 
 if len(argv) == 3:
     if argv[1].endswith('xlsx') and argv[2].endswith('xlsx'):
-      printff("Starting the program...")
+      printff("Starting the program...\n")
     else:
-      print("Incorrect file extention")
+      printff("Incorrect file extention\n")
       exit()
 else:
-    print("Something went wrong. Cannot open the file.")
+    printff("Something went wrong. Cannot open the file.\n")
     exit()
 
 # Transfer data from Excel file
 # Open Excel Workbook
-print(f"Opening file: {argv[1]}")
+printff(f"Opening file: {argv[1]}\n")
 try:
   wb = xl.load_workbook(argv[1])
 except OSError:
-  print("Cannot open file")
+  printff("Cannot open file\n")
   exit()
 
 
 # Open Active worksheet
-print("Opening active worksheet...")
+printff("Opening active worksheet...\n")
 sheet = wb.active
 
 managers = []
 
 max_row = sheet.max_row
 
-print("Retreiving information from columns...")
+printff("Retreiving information from columns...\n")
 for row in range(2, max_row + 1):
     name = sheet['A' + str(row)].value
     shift_type = sheet['B' + str(row)].value
@@ -46,7 +46,7 @@ for row in range(2, max_row + 1):
 
     managers.append(manager)
 
-print("Dictate the year: ")
+printff("Dictate the year:\n ")
 user_year = int(input())
 
 while False:
@@ -55,7 +55,7 @@ while False:
   else:
     True
 
-print("Dictate the month: ")
+printff("Dictate the month:\n ")
 user_month = int(input())
 
 while False:
@@ -65,14 +65,16 @@ while False:
     True
 
 year = user_year
+printff(f"Year is: {year}\n")
 month = user_month
+printff(f"Month is: {month}\n")
 
 # print("\nJan.'21, Set 1")
 # print([str(day) for day in yeardays(year) if day.month == month and get_shiftset(day)=="Set 1"])
 # print("Jan.'21, Set 2")
 # print([str(day) for day in yeardays(year) if day.month == month and get_shiftset(day)=="Set 2"])
 
-print("Generating set days for each Manager")
+printff("Generating set days for each Manager\n")
 for manager in managers:
     for day in yeardays(year):
         if day.month == month and get_shiftset(day) == "Set 1" and manager.mset == 1:
@@ -80,7 +82,7 @@ for manager in managers:
         elif day.month == month and get_shiftset(day) == "Set 2" and manager.mset == 2:
             manager.shifts.append(day)
 
-print("Translating Python Date numbers to Excel Date numbers")
+printff("Translating Python Date numbers to Excel Date numbers\n")
 for manager in managers:
     for shift in manager.shifts:
         x = str(shift)
@@ -92,13 +94,13 @@ for manager in managers:
 
 
 wb1 = xl.load_workbook(argv[2])
-print(f"Opening file: {argv[2]}")
+printff(f"Opening file: {argv[2]}\n")
 
 
 tsheet = wb1['Shifts']
 
 # Translateing managers info to excel column
-print("Translateing managers info to excel column")
+printff("Translateing managers info to excel column\n")
 for manager in managers:
     amount = len(manager.shifts)
     tsheet.insert_rows(idx=2, amount=amount + 1)
@@ -118,11 +120,11 @@ for manager in managers:
             tsheet['E' + str(row)] = '23:00'
             tsheet['G' + str(row)] = '07:00'
 
-print(f"Saving {argv[2]}")
+printff(f"Saving {argv[2]}\n")
 wb1.save(argv[2])
 
-print(f"Closing {argv[1]}")
+printff(f"Closing {argv[1]}\n")
 wb.close()
 
-print(f"Closing {argv[2]}")
+printff(f"Closing {argv[2]}\n")
 wb1.close()
