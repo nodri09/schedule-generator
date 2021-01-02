@@ -23,12 +23,7 @@ else:
 # Transfer data from Excel file
 # Open Excel Workbook
 printff(f"Opening file: {argv[1]}\n")
-try:
-  wb = xl.load_workbook(argv[1])
-except OSError:
-  printff("Cannot open file\n")
-  exit()
-
+wb = xl.load_workbook(argv[1])
 
 # Open Active worksheet
 printff("Opening active worksheet...\n")
@@ -94,23 +89,17 @@ for manager in managers:
         elif day.month == month and get_shiftset(day) == "Set 2" and manager.mset == 2:
             manager.shifts.append(day)
 
-"""
-printff("Translating Python Date numbers to Excel Date numbers\n")
-for manager in managers:
-    for shift in manager.shifts:
-        x = str(shift)
-        shift = x.replace("-", "/")
-"""
-
+# Change Python Date to Excel Date 
 for manager in managers:
     for i in range(len(manager.shifts)):
         manager.shifts[i] = str(manager.shifts[i]).replace("-", "/")
 
 
+# Open Team's schedule template file
 wb1 = xl.load_workbook(argv[2])
 printff(f"Opening file: {argv[2]}\n")
 
-
+# Load 'Shifts' sheet
 tsheet = wb1['Shifts']
 
 # Translateing managers info to excel column
@@ -127,13 +116,17 @@ for manager in managers:
         if manager.shift_type.lower() == 'morning':
             tsheet['E' + str(row)] = '07:00'
             tsheet['G' + str(row)] = '15:00'
+            tsheet['H' + str(row)] = '2. Blue'
         elif manager.shift_type.lower() == 'afternoon':
             tsheet['E' + str(row)] = '15:00'
             tsheet['G' + str(row)] = '23:00'
+            tsheet['H' + str(row)] = '3. Green'
         elif manager.shift_type.lower() == 'night':
-            tsheet['E' + str(row)] = '23:00'
+            tsheet['E' + str(row)] = '00:00'
             tsheet['G' + str(row)] = '07:00'
+            tsheet['H' + str(row)] = '5. Pink'
 
+# Save and close Workbooks
 printff(f"Saving {argv[2]}\n")
 wb1.save(argv[2])
 
