@@ -7,6 +7,9 @@ from openpyxl.utils import get_column_letter, column_index_from_string
 from set_calc import yeardays, get_shiftset, Manager, printff
 from sys import argv, exit
 
+# Check if command line arguments are 3
+# Check if second and third files have 'xlsx' file extention
+# If not correct any of the above, exit
 if len(argv) == 3:
     if argv[1].endswith('xlsx') and argv[2].endswith('xlsx'):
       printff("Starting the program...\n")
@@ -31,10 +34,13 @@ except OSError:
 printff("Opening active worksheet...\n")
 sheet = wb.active
 
+# List of Manager class - All the managers in one List
 managers = []
 
+# Store amount of rows in one variable
 max_row = sheet.max_row
 
+# Transfer information from Managers excel
 printff("Retreiving information from columns...\n")
 for row in range(2, max_row + 1):
     name = sheet['A' + str(row)].value
@@ -42,10 +48,14 @@ for row in range(2, max_row + 1):
     mset = sheet['C' + str(row)].value
     email = sheet['D' + str(row)].value
 
+    # Put Retreived info into the Manager class
     manager = Manager(name, shift_type, mset, email)
 
+    # Append every manager into the managers List
     managers.append(manager)
 
+# Ask user to provide Year and Month
+# Check to be numbers only
 printff("Dictate the year:\n ")
 user_year = int(input())
 
@@ -74,6 +84,8 @@ printff(f"Month is: {month}\n")
 # print("Jan.'21, Set 2")
 # print([str(day) for day in yeardays(year) if day.month == month and get_shiftset(day)=="Set 2"])
 
+# Generate set days of the given month of the given year
+# Assign generated set-days to managers, which have the same set
 printff("Generating set days for each Manager\n")
 for manager in managers:
     for day in yeardays(year):
@@ -82,11 +94,13 @@ for manager in managers:
         elif day.month == month and get_shiftset(day) == "Set 2" and manager.mset == 2:
             manager.shifts.append(day)
 
+"""
 printff("Translating Python Date numbers to Excel Date numbers\n")
 for manager in managers:
     for shift in manager.shifts:
         x = str(shift)
         shift = x.replace("-", "/")
+"""
 
 for manager in managers:
     for i in range(len(manager.shifts)):
