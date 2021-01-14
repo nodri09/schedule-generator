@@ -3,9 +3,7 @@ Schedule Generating file
 Created by Gelovani Nodar
 """
 import openpyxl as xl
-from openpyxl.utils import get_column_letter, column_index_from_string
 from set_calc import yeardays, get_shiftset, Manager, printff
-from sys import argv, exit
 
 # Check if command line arguments are 3
 # Check if second and third files have 'xlsx' file extention

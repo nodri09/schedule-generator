@@ -10,6 +10,7 @@ class Manager():
         self.mset = mset
         self.email = email
         self.shifts = []
+        self.role = []
 
 def yeardays(year):
     """Generate all days of the year."""
