@@ -2,13 +2,20 @@ import datetime as dt
 import time
 
 class Manager():
-    """Class of each manager"""
+    """Class of each manager transferred from excel file"""
 
-    def __init__(self, name, shift_type, mset, email):
+    def __init__(self, name):
+        """
+        The Manager has name, email, color and shifts list
+
+        Name is a string, managers full name. Necessary for Shifts Template
+        Email is a string, managers corporate email. Necessary for Shifts Template
+        Color is a cell color of Manager in excel file. Needed to determine shift start time. Necessary for shifts Template
+        Shifts list is a list of dictionary containing role and date of the manager's shift. Necessary for Shifts Template.
+        """
         self.name = name
-        self.shift_type = shift_type
-        self.mset = mset
-        self.email = email
+        self.email = ""
+        self.color = ""
         self.shifts = []
 
 def yeardays(year):
