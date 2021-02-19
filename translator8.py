@@ -59,7 +59,7 @@ def main(excel_file):
     # For every cell with none value assing value to 0
     # for better manipulation on the data
     for cell in cells:
-        if cell.value == "none" or cell.value is not None:
+        if cell.value == "none" or cell.value is None:
             continue
         else:
             copied_cells.append(cell)
@@ -82,7 +82,7 @@ def main(excel_file):
         value = value + "/" + str(current_year)
 
         y = dt.datetime.strptime(value, "%d/%m/%Y").date()
-        value = dt.datetime.strftime(y, "%-m/%d/%Y")
+        value = dt.datetime.strftime(y, "%#m/%d/%Y")
 
         excel_dates.update({key: value})
 
@@ -115,7 +115,7 @@ def translator(team_file, managers):
             ws['A' + str(2)] = manager.name
             ws['B' + str(2)] = manager.email
 
-            if manager.color == 8:
+            if manager.color == 4:
                 ws['E' + str(2)] = "07:00"
                 ws['G' + str(2)] = "19:00"
                 ws['H' + str(2)] = "8. DarkBlue"
