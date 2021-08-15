@@ -15,4 +15,8 @@ It coninsts of following .py files:
 * schedule.py
 
 #### sched-gen-gui.py
-This is a file that created Graphical User Interface of a generator. It must be run from terminal in order to work
+As the name of the file suggests it is a GUI file of a schedule-generator. It uses PySimpleGUI as a builder. It consists of a 4 input fields, submit and exit buttons. 
+2 out of 4 input fields take Excel file in, one of which should be .xlsx file that containt information about employees
+
+![employees file - Excel](https://user-images.githubusercontent.com/6499479/129481895-3f9b8215-cd09-4404-82a4-79d33aff0fac.jpg)
+
