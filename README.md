@@ -14,7 +14,7 @@ It coninsts of following .py files:
 * functions.py
 * schedule.py
 
-#### sched-gen-gui.py
+### sched-gen-gui.py
 As the name of the file suggests it is a GUI file of a schedule-generator. It uses PySimpleGUI as a builder. It consists of a 4 input fields, calculate and exit buttons. 
 
 ![Window that stays open_2](https://user-images.githubusercontent.com/6499479/129483141-c467c628-f25f-4d7a-bc30-8fa2af49ed49.jpg)
@@ -28,6 +28,6 @@ Another one should be empty shifts template Excel file, which you can download f
 
 Rest two input fields are 'Year' and 'Month'. Year should be full 4 digits number, e.g.: 2021, 2001, 1997. Month should be integer, too. E.g.: 1, 4, 5, 10, 12.
 
-#### functions.py
+### functions.py
 
 ## How can you start with thet project. 
