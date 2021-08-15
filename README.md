@@ -138,7 +138,7 @@ Before transferring all of this data to the shifts template it transforms dates 
 Finally, it transfers all the managers with their shift dates into Shifts template file, which can be directly updloaded to the teams widget. 
 
 ```
-# Translateing managers info to excel column
+# Transferring managers info to excel column
 
     for manager in managers:
         amount = len(manager.shifts)
