@@ -20,7 +20,14 @@ As the name of the file suggests it is a GUI file of a schedule-generator. It us
 ![Window that stays open_2](https://user-images.githubusercontent.com/6499479/129483141-c467c628-f25f-4d7a-bc30-8fa2af49ed49.jpg)
 
 
-2 out of 4 input fields take Excel file in, one of which should be .xlsx file that containt information about employees
+2 out of 4 input fields take Excel file in, one of which should be .xlsx file that contains information about employees (see below).
 
 ![employees file - Excel](https://user-images.githubusercontent.com/6499479/129481895-3f9b8215-cd09-4404-82a4-79d33aff0fac.jpg)
 
+Another one should be empty shifts template Excel file, which you can download from shifts plug-in itself. 
+
+Rest two input fields are 'Year' and 'Month'. Year should be full 4 digits number, e.g.: 2021, 2001, 1997. Month should be integer, too. E.g.: 1, 4, 5, 10, 12.
+
+#### functions.py
+
+## How can you start with thet project. 
