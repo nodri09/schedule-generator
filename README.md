@@ -29,9 +29,9 @@ Another one should be empty shifts template Excel file, which you can download f
 Rest two input fields are 'Year' and 'Month'. Year should be full 4 digits number, e.g.: 2021, 2001, 1997. Month should be integer, too. E.g.: 1, 4, 5, 10, 12.
 
 ### functions.py
-Functions.py file stores custom functions. Basically there are two functions defined there and a class.
+Functions.py file stores custom functions. Basically there are two functions defined there and a class. It requires two libraries: datetime and time. 
 
-yeardays function:
+**yeardays** function:
 ```
 def yeardays(year):
     """Generate all days of the year."""
@@ -39,7 +39,7 @@ def yeardays(year):
         yield dt.date(year,1,1) + dt.timedelta(days=d)
 ```
 
-get_shiftset function:
+**get_shiftset** function:
 ```
 def get_shiftset(d):
     """Determine if a day belongs to Set 1 or 2."""
@@ -47,7 +47,7 @@ def get_shiftset(d):
     return "Set 1" if set_day < 3 else "Set 2"
 ```
 
-Managers() class (As this was ment for Managers schedule in my company I have called this class Managers(), however, think of it as an Employee() class:
+**Managers()** class (As this was ment for Managers schedule in my company I have called this class Managers(), however, think of it as an **Employee()** class):
 ```
 class Manager():
     """
@@ -68,5 +68,14 @@ class Manager():
         self.shifts = []
         self.role = []m
 ```
+
+### Schedule.py
+This is where all the magic happens. Lets go one by one. It imports OpenPyXL library and functions.py
+
+One **main** function is defined in this file that takes **manager_file, yearInput, monthInput, teams_file** as arguments. This function later is called in sched-gen-gui.py to generate schedule.
+
+Main function first opens empleyee's file, creates Manager() class for each of them and stores them in a list (`managers = []`). 
+
+
 
 ## How can you start with thet project. 
