@@ -74,8 +74,9 @@ This is where all the magic happens. Lets go one by one. It imports OpenPyXL lib
 
 One **main** function is defined in this file that takes **manager_file, yearInput, monthInput, teams_file** as arguments. This function later is called in sched-gen-gui.py to generate schedule.
 
-Main function first opens empleyee's file, creates Manager() class for each of them and stores them in a list (`managers = []`). 
+Main function first opens empleyees.xlsx file, creates Manager() class for each of the employees and stores them in a list `managers = []`. Then generates set days by given year and month. Each of this generated set days are assigned to the manager in manager.shift list. Before transferring all of this data to the shifts template it transforms dates to the excel date format. 
 
+Finally, it transfers all the managers with their shift dates into Shifts template file, which can be directly updloaded to the teams widget. 
 
-
-## How can you start with thet project. 
+### Contact. 
+For more questions please contact me at: nodar.gelovavni@outlook.com
