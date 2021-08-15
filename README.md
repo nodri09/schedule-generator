@@ -16,7 +16,8 @@ It coninsts of following .py files:
 
 #### sched-gen-gui.py
 As the name of the file suggests it is a GUI file of a schedule-generator. It uses PySimpleGUI as a builder. It consists of a 4 input fields, calculate and exit buttons. 
-![schedule-generator gui](https://user-images.githubusercontent.com/6499479/129482202-9ef2ab26-a474-4a07-98ad-1ed6038a4373.jpg)
+
+![Window that stays open_2](https://user-images.githubusercontent.com/6499479/129483141-c467c628-f25f-4d7a-bc30-8fa2af49ed49.jpg)
 
 
 2 out of 4 input fields take Excel file in, one of which should be .xlsx file that containt information about employees
