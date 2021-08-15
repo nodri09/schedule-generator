@@ -3,7 +3,7 @@ Schedule Generating file
 Created by Gelovani Nodar
 """
 import openpyxl as xl
-from functions import yeardays, get_shiftset, Manager, printff
+from functions import yeardays, get_shiftset, Manager
 
 
 def main(manager_file, yearInput, monthInput, teams_file):
@@ -91,7 +91,7 @@ def main(manager_file, yearInput, monthInput, teams_file):
     # Load 'Shifts' sheet
     tsheet = wb1['Shifts']
 
-    # Translateing managers info to excel column
+    # Transffering managers info to excel column
 
     for manager in managers:
         amount = len(manager.shifts)
