@@ -74,9 +74,94 @@ This is where all the magic happens. Lets go one by one. It imports OpenPyXL lib
 
 One **main** function is defined in this file that takes **manager_file, yearInput, monthInput, teams_file** as arguments. This function later is called in sched-gen-gui.py to generate schedule.
 
-Main function first opens empleyees.xlsx file, creates Manager() class for each of the employees and stores them in a list `managers = []`. Then generates set days by given year and month. Each of this generated set days are assigned to the manager in manager.shift list. Before transferring all of this data to the shifts template it transforms dates to the excel date format. 
+Main function first opens empleyees.xlsx file, creates Manager() class for each of the employees and stores them in a list `managers = []`. 
+
+```
+  # Transfer information from Managers excel
+
+    for row in range(2, max_row + 1):
+        name = sheet['A' + str(row)].value
+        shift_type = sheet['B' + str(row)].value
+        mset = sheet['C' + str(row)].value
+        email = sheet['D' + str(row)].value
+
+        # Put Retreived info into the Manager class
+        manager = Manager(name, shift_type, mset, email)
+
+        # Append every manager into the managers List
+        managers.append(manager)
+```
+
+Then generates set days by given year and month. Each of this generated set days are assigned to the manager in manager.shift list. 
+
+```
+# Generate set days of the given month of the given year
+user_year = yearInput
+
+    while False:
+      if user_year == None or type(user_year) != int():
+        False
+      else:
+        True
+
+
+    user_month = monthInput
+
+    while False:
+      if user_month == None or type(user_month) != int():
+        False
+      else:
+        True
+
+    year = user_year
+
+    month = user_month
+    
+    
+for manager in managers:
+        for day in yeardays(year):
+            if day.month == month and get_shiftset(day) == "Set 1" and manager.mset == 1:
+                manager.shifts.append(day)
+            elif day.month == month and get_shiftset(day) == "Set 2" and manager.mset == 2:
+                manager.shifts.append(day)
+```
+
+Before transferring all of this data to the shifts template it transforms dates to the excel date format. 
+
+```
+# Change Python Date to Excel Date
+    for manager in managers:
+        for i in range(len(manager.shifts)):
+            manager.shifts[i] = str(manager.shifts[i]).replace("-", "/")
+```
 
 Finally, it transfers all the managers with their shift dates into Shifts template file, which can be directly updloaded to the teams widget. 
+
+```
+# Translateing managers info to excel column
+
+    for manager in managers:
+        amount = len(manager.shifts)
+        tsheet.insert_rows(idx=2, amount=amount + 1)
+        for row in range(2, amount + 2):
+            tsheet['A' + str(row)] = manager.name
+            tsheet['B' + str(row)] = manager.email
+            tsheet['D' + str(row)] = manager.shifts[row - 2]
+            tsheet['F' + str(row)] = manager.shifts[row - 2]
+
+            if manager.shift_type.lower() == 'morning':
+                tsheet['E' + str(row)] = '07:00'
+                tsheet['G' + str(row)] = '15:00'
+                tsheet['H' + str(row)] = '2. Blue'
+            elif manager.shift_type.lower() == 'afternoon':
+                tsheet['E' + str(row)] = '15:00'
+                tsheet['G' + str(row)] = '23:00'
+                tsheet['H' + str(row)] = '3. Green'
+            elif manager.shift_type.lower() == 'night':
+                tsheet['E' + str(row)] = '00:00'
+                tsheet['G' + str(row)] = '07:00'
+                tsheet['H' + str(row)] = '5. Pink'
+```
 
 ### Contact. 
 For more questions please contact me at: nodar.gelovavni@outlook.com
