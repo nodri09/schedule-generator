@@ -3,7 +3,7 @@ Schedule Generating file
 Created by Gelovani Nodar
 """
 import openpyxl as xl
-from set_calc import yeardays, get_shiftset, Manager, printff
+from functions import yeardays, get_shiftset, Manager, printff
 
 
 def main(manager_file, yearInput, monthInput, teams_file):
@@ -11,11 +11,11 @@ def main(manager_file, yearInput, monthInput, teams_file):
 
     # Transfer data from Excel file
     # Open Excel Workbook
-    
+
     wb = xl.load_workbook(manager_file)
 
     # Open Active worksheet
-    
+
     sheet = wb.active
 
     # List of Manager class - All the managers in one List
@@ -25,7 +25,7 @@ def main(manager_file, yearInput, monthInput, teams_file):
     max_row = sheet.max_row
 
     # Transfer information from Managers excel
-    
+
     for row in range(2, max_row + 1):
         name = sheet['A' + str(row)].value
         shift_type = sheet['B' + str(row)].value
@@ -40,7 +40,7 @@ def main(manager_file, yearInput, monthInput, teams_file):
 
     # Ask user to provide Year and Month
     # Check to be numbers only
-    
+
     user_year = yearInput
 
     while False:
@@ -49,7 +49,7 @@ def main(manager_file, yearInput, monthInput, teams_file):
       else:
         True
 
-    
+
     user_month = monthInput
 
     while False:
@@ -59,9 +59,9 @@ def main(manager_file, yearInput, monthInput, teams_file):
         True
 
     year = user_year
-    
+
     month = user_month
-    
+
 
     # print("\nJan.'21, Set 1")
     # print([str(day) for day in yeardays(year) if day.month == month and get_shiftset(day)=="Set 1"])
@@ -70,7 +70,7 @@ def main(manager_file, yearInput, monthInput, teams_file):
 
     # Generate set days of the given month of the given year
     # Assign generated set-days to managers, which have the same set
-    
+
     for manager in managers:
         for day in yeardays(year):
             if day.month == month and get_shiftset(day) == "Set 1" and manager.mset == 1:
@@ -86,13 +86,13 @@ def main(manager_file, yearInput, monthInput, teams_file):
 
     # Open Team's schedule template file
     wb1 = xl.load_workbook(teams_file)
-    
+
 
     # Load 'Shifts' sheet
     tsheet = wb1['Shifts']
 
     # Translateing managers info to excel column
-    
+
     for manager in managers:
         amount = len(manager.shifts)
         tsheet.insert_rows(idx=2, amount=amount + 1)
@@ -116,11 +116,11 @@ def main(manager_file, yearInput, monthInput, teams_file):
                 tsheet['H' + str(row)] = '5. Pink'
 
     # Save and close Workbooks
-    
+
     wb1.save(teams_file)
 
-    
+
     wb.close()
 
-    
+
     wb1.close()
