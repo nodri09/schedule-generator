@@ -4,7 +4,7 @@ Created by Gelovani Nodar
 """
 import openpyxl as xl
 from openpyxl.utils import get_column_letter, column_index_from_string
-from set_calc import yeardays, get_shiftset, Manager, printff
+from functions import yeardays, get_shiftset, Manager, printff
 from sys import argv, exit
 
 # Check if command line arguments are 3
@@ -89,7 +89,7 @@ for manager in managers:
         elif day.month == month and get_shiftset(day) == "Set 2" and manager.mset == 2:
             manager.shifts.append(day)
 
-# Change Python Date to Excel Date 
+# Change Python Date to Excel Date
 for manager in managers:
     for i in range(len(manager.shifts)):
         manager.shifts[i] = str(manager.shifts[i]).replace("-", "/")
