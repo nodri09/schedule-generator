@@ -29,5 +29,23 @@ Another one should be empty shifts template Excel file, which you can download f
 Rest two input fields are 'Year' and 'Month'. Year should be full 4 digits number, e.g.: 2021, 2001, 1997. Month should be integer, too. E.g.: 1, 4, 5, 10, 12.
 
 ### functions.py
+Functions.py file stores custom functions. Basically there are two functions defined there and a class.
+
+yeardays function:
+'''
+def yeardays(year):
+    """Generate all days of the year."""
+    for d in range(365):
+        yield dt.date(year,1,1) + dt.timedelta(days=d)
+'''
+
+get_shift_set function:
+'''
+def get_shiftset(d):
+    """Determine if a day belongs to Set 1 or 2."""
+    set_day = (d - dt.date(d.year,1,1)).days % 6
+    return "Set 1" if set_day < 3 else "Set 2"
+'''
+
 
 ## How can you start with thet project. 
