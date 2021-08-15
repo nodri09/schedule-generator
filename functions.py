@@ -1,8 +1,20 @@
+"""
+Functions that were created specifically for schedule-generator program.
+"""
+
 import datetime as dt
 import time
 
 class Manager():
-    """Class of each manager"""
+    """
+    Class of manager (employee).
+    self.name - Stores name of a manager (employee);
+    self.shift_type - Stores shift type of an employee (Morning, Afternoon, or Night);
+    self.mset - Stores set of an employee (should be 1 or 2);
+    self.email - Stores email of an employee;
+    self.shifts - Empty list upon creation of a new class. Later stores all the generated shift dates of an employee.
+    self.role - Empty upon creation. Can be assigned later.
+    """
 
     def __init__(self, name, shift_type, mset, email):
         self.name = name
@@ -21,11 +33,6 @@ def get_shiftset(d):
     """Determine if a day belongs to Set 1 or 2."""
     set_day = (d - dt.date(d.year,1,1)).days % 6
     return "Set 1" if set_day < 3 else "Set 2"
-
-def printff(text):
-  for i in text:
-    time.sleep(0.05)
-    print(i, end='', flush=True)
 
 # show all days of 2021 and their sets
 #print("Sets of 2021")

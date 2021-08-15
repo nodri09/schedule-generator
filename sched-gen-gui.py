@@ -1,3 +1,7 @@
+"""
+GUI app of schedule-generator application.
+Made by useing PySimpleGUI.
+"""
 import PySimpleGUI as sg
 from schedule import main
 
