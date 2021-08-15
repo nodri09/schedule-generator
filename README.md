@@ -1,5 +1,5 @@
 # schedule-generator
-This is schedule generator for shift and set based employees
+This is schedule generator for shift and set based employees. At first, I have created this for my company, however, as they are not going to use this I have possibility to share it here. 
 
 
 ## What the project does
@@ -39,7 +39,7 @@ def yeardays(year):
         yield dt.date(year,1,1) + dt.timedelta(days=d)
 ```
 
-get_shift_set function:
+get_shiftset function:
 ```
 def get_shiftset(d):
     """Determine if a day belongs to Set 1 or 2."""
@@ -47,5 +47,26 @@ def get_shiftset(d):
     return "Set 1" if set_day < 3 else "Set 2"
 ```
 
+Managers() class (As this was ment for Managers schedule in my company I have called this class Managers(), however, think of it as an Employee() class:
+```
+class Manager():
+    """
+    Class of manager (employee).
+    self.name - Stores name of a manager (employee);
+    self.shift_type - Stores shift type of an employee (Morning, Afternoon, or Night);
+    self.mset - Stores set of an employee (should be 1 or 2);
+    self.email - Stores email of an employee;
+    self.shifts - Empty list upon creation of a new class. Later stores all the generated shift dates of an employee.
+    self.role - Empty upon creation. Can be assigned later.
+    """
+
+    def __init__(self, name, shift_type, mset, email):
+        self.name = name
+        self.shift_type = shift_type
+        self.mset = mset
+        self.email = email
+        self.shifts = []
+        self.role = []m
+```
 
 ## How can you start with thet project. 
