@@ -1,5 +1,5 @@
 # schedule-generator
-This is schedule generator for shift and set based employees. At first, I have created this for my company, however, as they are not going to use this I have possibility to share it here. 
+This is schedule generator for shift and set based employees.
 
 
 ## What the project does
