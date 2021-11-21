@@ -9,12 +9,12 @@ sg.theme('Dark Blue 17')    # Keep things interesting for your users
 
 layout = [
     [sg.Text('Schedule Generator', font=("Helvetica", 20))],
-    [sg.Text('='*65)],
+    [sg.HorizontalSeparator()],
     [sg.Text('Choose Employee Excel File')],
     [sg.In(key='-MANAGER_FILE-'), sg.FileBrowse(file_types=(("Excel Files", "*.xlsx"),))],
     [sg.Text('Choose Teams File')],
     [sg.In(key='-TEAMS_FILE-'), sg.FileBrowse(file_types=(("Excel Files", "*.xlsx"),))],
-    [sg.Text('-'*50)],
+    [sg.HorizontalSeparator()],
     [sg.Text('Choose Year', size=(15, 1), font=('Courier', 14)), sg.Input(key='-YEAR-', size=(4, 1))],
     [sg.Text('Choose Month', size=(15, 1), font=('Courier', 14)), sg.Input(key='-MONTH-', size=(4, 1))],
     [sg.Button('Calculate', key="-CALCULATE-"), sg.Exit()]
