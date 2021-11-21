@@ -164,4 +164,4 @@ Finally, it transfers all the managers with their shift dates into Shifts templa
 ```
 
 ### Contact. 
-For more questions please contact me at: nodar.gelovavni@outlook.com
+For more questions please contact me at: nodar.gelovani@outlook.com
